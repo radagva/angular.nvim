@@ -119,38 +119,6 @@ function ui.show_schematics_list(schematics_list, on_schematic_select)
 
 	vim.api.nvim_buf_set_lines(buf, #lines, #lines + #help_lines, false, help_lines)
 	vim.api.nvim_buf_add_highlight(buf, -1, "Comment", #lines, 0, -1)
-	-- local lines = {}
-	-- for _, schematic in ipairs(schematics_list) do
-	-- 	table.insert(lines, string.format("%-15s - %s", schematic.name, schematic.description or "No description"))
-	-- end
-	--
-	-- table.sort(lines)
-	--
-	-- local buf = vim.api.nvim_create_buf(false, true)
-	-- local width = math.floor(vim.o.columns * config.config.ui.width)
-	-- local height = math.floor(vim.o.lines * config.config.ui.height)
-	-- local col = math.floor((vim.o.columns - width) / 2)
-	-- local row = math.floor((vim.o.lines - height) / 2)
-	--
-	-- local _ = vim.api.nvim_open_win(buf, true, {
-	-- 	relative = "editor",
-	-- 	width = width,
-	-- 	height = height,
-	-- 	col = col,
-	-- 	row = row,
-	-- 	style = "minimal",
-	-- 	border = config.config.ui.border,
-	-- 	title = "Available Angular Schematics",
-	-- })
-	--
-	-- vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-	-- vim.api.nvim_buf_set_option(buf, "modifiable", false)
-	-- vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
-	--
-	-- local opts = { noremap = true, silent = true }
-	-- vim.api.nvim_buf_set_keymap(buf, "n", "q", "<cmd>q<CR>", opts)
-	-- vim.api.nvim_buf_set_keymap(buf, "n", "<ESC>", "<cmd>q<CR>", opts)
-	-- vim.api.nvim_buf_set_keymap(buf, "n", "<CR>", "<cmd>q<CR>", opts)
 end
 
 function ui._select_schematic_by_index(buf, index)
