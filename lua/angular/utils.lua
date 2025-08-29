@@ -61,7 +61,7 @@ function M.multi_select(options, prompt, on_complete)
 	-- Initialize selections
 	for i, option in ipairs(options) do
 		selections[i] = { selected = false, value = option.value, label = option.label }
-		table.insert(formatted_options, string.format("[ ] %s", option.label))
+		table.insert(formatted_options, string.format("  %s", option.label))
 	end
 
 	local buf = vim.api.nvim_create_buf(false, true)
@@ -134,8 +134,8 @@ function M._toggle_multi_select(buf)
 			selections[index].selected = not selections[index].selected
 
 			-- Update display
-			local new_char = selections[index].selected and "[x]" or "[ ]"
-			local new_line = string.format("%s %s", new_char, selections[index].label)
+			local new_char = selections[index].selected and " " or " "
+			local new_line = string.format(" %s%s", new_char, selections[index].label)
 
 			vim.api.nvim_buf_set_option(buf, "modifiable", true)
 			vim.api.nvim_buf_set_lines(buf, line, line + 1, false, { new_line })
