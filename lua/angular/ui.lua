@@ -225,8 +225,6 @@ function ui._prompt_component_options(options, on_complete)
 				{ value = "flat", label = "Flat structure (no folder)" },
 				{ value = "inline-template", label = "Inline template" },
 				{ value = "inline-style", label = "Inline style" },
-				-- { value = "changeDetection", label = "Change detection" },
-				-- { value = "export", label = "Export" },
 			},
 			"Component Options",
 			function(selected_options)
@@ -237,32 +235,6 @@ function ui._prompt_component_options(options, on_complete)
 				on_complete(options)
 			end
 		)
-
-		-- vim.ui.select({ "Yes", "No" }, {
-		-- 	prompt = "Skip tests?",
-		-- 	format_item = function(item)
-		-- 		return item
-		-- 	end,
-		-- }, function(skip_tests)
-		-- 	options["skip-tests"] = skip_tests == "Yes"
-		--
-		-- 	vim.ui.select({ "Yes", "No" }, {
-		-- 		prompt = "Flat structure (no folder)?",
-		-- 		format_item = function(item)
-		-- 			return item
-		-- 		end,
-		-- 	}, function(flat)
-		-- 		vim.ui.select({ "Yes", "No" }, {
-		-- 			prompt = "Inline template (no html file)",
-		-- 			format_item = function(item)
-		-- 				return item
-		-- 			end,
-		-- 		}, function(template)
-		-- 			options["inline-template"] = template == "Yes"
-		-- 			on_complete(options)
-		-- 		end)
-		-- 	end)
-		-- end)
 	end)
 end
 
