@@ -239,24 +239,20 @@ function ui._prompt_component_options(options, on_complete)
 end
 
 function ui._prompt_service_options(options, on_complete)
-	vim.ui.select({ "Yes", "No" }, {
-		prompt = "Skip tests?",
-		format_item = function(item)
-			return item
-		end,
-	}, function(skip_tests)
-		options.skipTests = skip_tests == "Yes"
+	utils.multi_select(
+		{
+			{ value = "skip-tests", label = "Skip tests" },
+			{ value = "flat", label = "Flat structure (no folder)" },
+		},
+		"Service Options",
+		function(selected_options)
+			for _, opt in ipairs(selected_options or {}) do
+				options[opt] = true
+			end
 
-		vim.ui.select({ "Yes", "No" }, {
-			prompt = "Flat structure (no folder)?",
-			format_item = function(item)
-				return item
-			end,
-		}, function(flat)
-			options.flat = flat == "Yes"
 			on_complete(options)
-		end)
-	end)
+		end
+	)
 end
 
 function ui._prompt_module_options(options, on_complete)
